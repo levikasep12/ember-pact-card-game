@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Pact — a duel card game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">EMBER PACT</div>
+    <div id="round-label">Round 1</div>
+    <div id="deck-counts"><span id="deck-you">Deck 31</span> · <span id="deck-opp">Deck 31</span></div>
+    <button id="rules-btn" type="button">How to play</button>
+    <button id="new-btn" type="button">New game</button>
+  </header>
+
+  <main id="table">
+    <section id="opp-side" class="side">
+      <div class="player-tag">
+        <span class="avatar" id="opp-avatar">R</span>
+        <span class="pname">Rook, the Ember Warden</span>
+        <span class="life-wrap"><span class="life-bar"><span id="life-opp" class="life-fill opp"></span></span><span id="life-opp-num" class="life-num">20</span></span>
+      </div>
+      <div id="opp-hand" class="hand opp-hand" aria-label="Rook's hand"></div>
+      <div id="tell" class="tell">Rook shuffles the deck and waits…</div>
+    </section>
+
+    <section id="center">
+      <div id="played-row">
+        <div id="played-opp" class="played-slot"><span class="slot-label">Rook plays</span></div>
+        <div id="versus">VS</div>
+        <div id="played-you" class="played-slot"><span class="slot-label">You play</span></div>
+      </div>
+      <div id="banner" class="banner">Pick a card to open the duel.</div>
+    </section>
+
+    <section id="you-side" class="side">
+      <div class="player-tag">
+        <span class="avatar you">Y</span>
+        <span class="pname">You — the Pactbreaker</span>
+        <span class="life-wrap"><span class="life-bar"><span id="life-you" class="life-fill you"></span></span><span id="life-you-num" class="life-num">20</span></span>
+      </div>
+      <div id="you-hand" class="hand you-hand" aria-label="Your hand"></div>
+      <div id="hint" class="hint">Click one of your cards. Higher power wins the round — an element advantage adds +3.</div>
+    </section>
+  </main>
+
+  <aside id="log-panel">
+    <div class="log-title">Duel log</div>
+    <ol id="log"></ol>
+  </aside>
+
+  <div id="title-screen" class="overlay">
+    <div class="overlay-card">
+      <div class="game-title">EMBER PACT</div>
+      <div class="game-sub">A duel of four elements. One card a round. No mercy, no draws.</div>
+      <div class="title-cards" id="title-cards"></div>
+      <p class="title-rules">Ember burns Gale · Gale scatters Tide · Tide wears Stone · Stone smothers Ember.<br>
+      Win a round and your rival loses life equal to the gap. First to 0 life loses the pact.</p>
+      <button id="start-btn" type="button" class="big-btn">Begin the duel</button>
+    </div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <div class="overlay-card">
+      <div id="end-title" class="game-title">VICTORY</div>
+      <div id="end-sub" class="game-sub"></div>
+      <div id="end-stats" class="end-stats"></div>
+      <button id="again-btn" type="button" class="big-btn">Duel again</button>
+    </div>
+  </div>
+
+  <div id="rules-screen" class="overlay hidden">
+    <div class="overlay-card rules-card">
+      <div class="game-title small">HOW TO PLAY</div>
+      <ul class="rules-list">
+        <li>Each round you and Rook each play one card from your hand of five, then draw back up.</li>
+        <li>The card with the higher power wins the round. The loser loses life equal to the difference.</li>
+        <li>Element advantage adds +3 power: Ember &gt; Gale &gt; Tide &gt; Stone &gt; Ember.</li>
+        <li><b>Mend</b> heals you 4 when played. <b>Ward</b> blocks all damage that round. <b>Siphon</b> heals you for the damage you deal. <b>Wild</b> reveals a random power from 1 to 9.</li>
+        <li>A tie deals no damage. First to 0 life loses. Watch Rook's tell — it hints at what he is planning.</li>
+      </ul>
+      <button id="rules-close" type="button" class="big-btn">Back to the table</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
